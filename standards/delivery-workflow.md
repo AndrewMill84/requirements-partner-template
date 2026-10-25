@@ -1,0 +1,53 @@
+# Requirements to implementation
+
+## Authority
+Product requirements are authored here. Existing target system ADRs, vocabulary and specifications remain evidence and constraints; architecture maps and graphs are navigation. Do not migrate or rewrite all existing specifications as part of a new capability.
+
+A newly agreed change that conflicts with an existing ADR must identify the conflict and the required amendment or supersession. The implementation agent must not silently choose precedence.
+
+## 1. Discover and agree
+Follow [discovery workflow](discovery-workflow.md): prepare independently, classify issues before asking, and reconcile interacting decisions throughout discovery. Reuse confirmed authorities with evidence; prepare material business choices for the product owner.
+
+Choose the compact template or separate capability records in proportion to the change. Sections and separate files follow the same authority, stable-ID and readiness rules. Create an implementation handoff record before delivery. Investigate the relevant target system version and record evidence. Resolve material questions with the authorised owner. Reference existing platform rule/behaviour/invariant IDs only after checking their sources.
+
+Use `Draft` → `In review` → `Ready for engineering` for requirements. `Ready for engineering` requires explicit acceptance by the authorised owner, dated and scoped, with no unresolved material decisions for that scope. Deferred work must be explicit.
+
+Where domain calculations, financial figures or effective-dated state transitions are in scope, readiness also requires independently checked numerical examples sufficient to establish expected results ([domain-calculations-module.md](domain-calculations-module.md)).
+
+## 2. Freeze the handoff
+Use [validation conventions](validation.md) for accepted scope, blocker and handoff fields. Run structural checks and a separate behaviour review before handoff. Readiness for a limited scope requires explicit acceptance of that scope and resolved dependencies; a deferred question cannot silently affect it. Workflow phase is distinct from readiness and delivery state.
+
+Commit and push accepted requirements, decisions and examples. Record that full 40-character requirements commit SHA and immutable file URLs in `implementation.md` or the compact specification's `Implementation` section in a later commit. Record the target system evidence SHA separately.
+
+Set `Handoff status` to `Prepared` only after these records are complete. Automated checks of baseline strings do not verify remote contents or permission to implement.
+
+Specify included `FR`/`BR`/`EX` IDs, exclusions, dependencies, affected existing rules, ADR changes needed and validation expectations. Access failure or a missing approval is a visible blocker.
+
+If requirements change after handoff, create a new baseline and identify affected tickets, tests and implementation work; never silently replace the approved baseline.
+
+## 3. Implement in target repository
+Give the implementation agent the pinned requirements link, capability path and target system evidence commit. It reads the target repository's `AGENTS.md` and relevant current context, ADRs, architecture docs, tickets and code.
+
+Check differences since the evidence commit. Pause affected work if new findings invalidate a requirement or expose a material unresolved decision.
+
+Follow the target repository's issue/spec tracker conventions (configured in [project-context.md](../project-context.md)). The local implementation spec or ticket references the pinned requirements baseline and contains execution-specific context rather than a second editable copy of product rules.
+
+Plan, implement, review and test under target repository rules. Map requirement IDs and invariants to tests as required there.
+
+Requirements approval is not permission to merge or deploy.
+
+## 4. Verify and close the loop
+Map each included `FR` and `BR` to the relevant acceptance examples and implementation/test evidence. Record exact target commit, PR, commands, results, environment, known failures and gaps. A passing suite alone is not proof that every acceptance example is covered.
+
+Keep requirement readiness separate from delivery state:
+- `Not started`: no implementation evidence.
+- `In progress`: work underway.
+- `Implemented`: code exists; verification may remain.
+- `Verified`: scoped acceptance evidence is recorded, including disclosed limitations.
+- `Accepted`: the product owner explicitly accepts the delivered scope.
+
+Use `Blocked` when necessary and explain the blocker. Do not fabricate a PR, approval or test run.
+
+Update the implementation and checkpoint records and the capability index with actual references. Product behaviour changes discovered during implementation return to the decision process here.
+
+Record actual first-handoff clarification results and downstream findings in [the capability measurement record](../measurements/README.md), linked to the requirements baseline and scoped IDs. Attribute cause and rework honestly; distinguish changed business needs, implementation defects and unknowns from requirements gaps. Passing CI or silence does not establish a usable handoff, zero escaped defects or product acceptance.

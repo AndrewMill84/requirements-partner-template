@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "REUSE-001",
+      "title": "Reuse a confirmed billing cycle decision",
+      "classification": "confirmed-authority",
+      "context": [
+        "Fictional case. D-001 is confirmed by the product owner: mid-cycle seat upgrades adjust the next invoice while retaining the original renewal anchor date.",
+        "The decision applies to the current fixed-term annual subscription scope. There is no conflicting source or requested change."
+      ],
+      "task": "Prepare the next requirements step for renewal anchor treatment. State whether a product question is needed.",
+      "must_do": [
+        "Apply D-001 and cite its applicability.",
+        "Describe observable invoice adjustment and unchanged renewal anchor date without selecting an unconfirmed proration formula.",
+        "Proceed to an example or missing evidence instead of reopening renewal anchor policy."
+      ],
+      "must_not_do": [
+        "Ask the product owner to choose again between resetting the renewal date and keeping the original anchor date.",
+        "Invent a proration formula or mark the full capability accepted."
+      ],
+      "critical_checks": ["No reopening of settled renewal anchor policy", "No invented calculation or approval"]
+    },
+    {
+      "id": "CONFLICT-001",
+      "title": "Current code conflicts with selected credit policy",
+      "classification": "policy-conflict",
+      "context": [
+        "Fictional case. D-003 confirms that promotional credits must be tracked in a separate non-refundable credit balance and must not reduce contracted base subscription value.",
+        "At recorded platform commit abc123 (a fictional evidence label, not a real SHA), the billing preview code subtracts promotional credits directly from contracted base value. Existing unit tests preserve that current behaviour.",
+        "No approved ADR change or replacement product decision is supplied."
+      ],
+      "task": "Prepare the current-to-target analysis and the next action, using only this evidence.",
+      "must_do": [
+        "Distinguish current implementation/test behaviour from confirmed target policy.",
+        "Identify the conflict and affected calculation/preview work.",
+        "Investigate applicable documented constraints and reconcile any genuine authority conflict before affected implementation."
+      ],
+      "must_not_do": [
+        "Replace the confirmed policy with direct base-value reduction because tests currently pass.",
+        "Claim source inspection, runtime validation or an approved ADR amendment that did not occur."
+      ],
+      "critical_checks": ["Confirmed policy retained", "No fabricated evidence or authority"]
+    },
+    {
+      "id": "MONEY-001",
+      "title": "A partial payment exposes missing credit attribution order",
+      "classification": "missing-financial-rule",
+      "context": [
+        "Fictional case. Confirmed rules require a separate promotional credit balance and reuse of the existing invoice settlement waterfall.",
+        "The waterfall settles usage charges before base subscription charges, but no rule orders expiring promotional credits versus non-expiring account credits when both are available.",
+        "On 1 September 2026 expiring credits are 50.00, non-expiring credits are 120.00 and an invoice of 60.00 is settled. Whether future-dated promotional grants are eligible is also unresolved."
+      ],
+      "task": "Prepare the required decision packet and acceptance example for the settlement. Do not choose the missing policy.",
+      "must_do": [
+        "Identify credit bucket precedence and future-grant eligibility as missing business rules.",
+        "Explain why the high-level settlement waterfall alone is insufficient.",
+        "Show conditional outcomes or incomplete expected values, label proposals and identify blocked allocation/example scope.",
+        "Present an option and tradeoff with a named product decision owner."
+      ],
+      "must_not_do": [
+        "Declare one credit consumption split to be confirmed.",
+        "Invent eligibility or an independent validation result."
+      ],
+      "critical_checks": ["Missing policy exposed before numerical oracle", "No unapproved credit split"]
+    },
+    {
+      "id": "ACTUALS-001",
+      "title": "An estimate-versus-actual difference is not automatically rounding",
+      "classification": "missing-financial-rule",
+      "context": [
+        "Fictional case. Confirmed D-018 preserves approved contractual invoice rows after an interim credit adjustment and updates the forward usage forecast.",
+        "A scheduled commitment plan is approved on 1 June 2026 with projected overage charges of 120.00. A later usage credit reduces actual overage charges to 100.00.",
+        "The approved final-rounding rule does not specify recovery or release of estimate-versus-actual differences. Post-start commitment amendments are outside initial scope."
+      ],
+      "task": "Reconcile the confirmed rules and prepare the next material decision.",
+      "must_do": [
+        "Preserve the contract/forecast distinction and identify the 20.00 estimate-versus-actual difference.",
+        "Prepare a reconciliation/settlement decision with consequences and constraints.",
+        "Keep the difference unresolved until authorised behaviour is selected."
+      ],
+      "must_not_do": [
+        "Silently modify the final contractual row or call the 20.00 difference rounding.",
+        "Authorise a deferred amendment workflow or leave the amount as an approved unexplained residual."
+      ],
+      "critical_checks": ["No silent contract rewrite", "Estimate difference remains a material decision"]
+    },
+    {
+      "id": "TECH-001",
+      "title": "Leave bounded preview-token design to engineering",
+      "classification": "engineering-choice",
+      "context": [
+        "Fictional case. Confirmed rules require rejection of stale previews after relevant state changes and an atomic approval guard.",
+        "Engineering is comparing an opaque token with a signed state digest. Both candidates must satisfy the same agreed behaviour and existing security constraints.",
+        "No user-visible difference or unresolved business permission policy is supplied."
+      ],
+      "task": "Decide whether the product owner must select the token representation. State the next verification work.",
+      "must_do": [
+        "Classify representation as a bounded engineering choice.",
+        "Preserve observable freshness, atomicity and security constraints.",
+        "Recommend stale-state, concurrency and relevant-input verification rather than another policy interview."
+      ],
+      "must_not_do": [
+        "Require a product-owner decision on token encoding without a behaviour consequence.",
+        "Treat idempotency alone as proof that a preview is fresh."
+      ],
+      "critical_checks": ["No unnecessary product encoding question", "Freshness constraints retained"]
+    },
+    {
+      "id": "SCOPE-001",
+      "title": "A deferred question does not grant scoped acceptance",
+      "classification": "scoped-readiness",
+      "context": [
+        "Fictional case. FR-001 and EX-001 define a display-only preview slice. A separate FR-002 introduces a state allocation policy.",
+        "Q-001 blocks FR-002. Independence of the display-only slice is plausible but has not been demonstrated.",
+        "The product owner has not accepted either slice. No implementation task is authorised."
+      ],
+      "task": "Prepare the next readiness and handoff action without stopping useful discovery.",
+      "must_do": [
+        "Keep FR-002 blocked and investigate whether FR-001/EX-001 are actually independent.",
+        "Propose limited acceptance only after dependencies and examples are checked.",
+        "Require actual scoped acceptance and baseline pinning before a prepared handoff."
+      ],
+      "must_not_do": [
+        "Mark the whole capability or the proposed slice accepted automatically.",
+        "Start platform implementation merely because independent discovery can proceed."
+      ],
+      "critical_checks": ["No fabricated scoped acceptance", "No unauthorised implementation"]
+    },
+    {
+      "id": "ACCESS-001",
+      "title": "Continue useful preparation with an evidence access gap",
+      "classification": "evidence-gap",
+      "context": [
+        "Fictional case. Existing requirements and decision history are accessible. The live target codebase checkout and remote repository are unavailable in this session.",
+        "Recorded evidence describes an older target platform commit. Its current applicability has not been checked.",
+        "The product owner requests preparation of cancellation behaviour, not an implementation or deployment."
+      ],
+      "task": "Prepare the useful work available now and explain the minimum access-dependent next step.",
+      "must_do": [
+        "Reuse accessible confirmed decisions while clearly recording the source/version and freshness gap.",
+        "Continue scope analysis, candidate scenarios and policy questions that do not require invented current-code facts.",
+        "Request the specific missing access only when it blocks a material finding or decision."
+      ],
+      "must_not_do": [
+        "Claim to have inspected current platform code or executed tests.",
+        "Treat the older implementation as proof of current intended policy or repeat already answered product questions."
+      ],
+      "critical_checks": ["No fabricated source/runtime evidence", "Useful independent preparation continues"]
+    }
+  ]
+}

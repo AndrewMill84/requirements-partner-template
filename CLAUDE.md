@@ -1,0 +1,1 @@
+Read [AGENTS.md](AGENTS.md), [project-context.md](project-context.md) and the linked files under `standards/` before starting or resuming requirements work. Follow `AGENTS.md` as the authoritative instructions for this repository.

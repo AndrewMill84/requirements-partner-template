@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "capability": "replace-with-capability-folder-slug",
+  "tracking_started_on": "YYYY-MM-DD",
+  "context": {
+    "size": "unknown",
+    "novelty": "unknown",
+    "financial": null,
+    "basis": "Classify the intended scope before observing its results; record who made this judgment and why."
+  },
+  "history_note": "Prospective tracking. Earlier effort, questions and outcomes are unknown unless a separately evidenced historical observation is added.",
+  "sessions": [],
+  "findings": [],
+  "handoff_reviews": []
+}
